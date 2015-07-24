@@ -1,12 +1,28 @@
 ﻿{
   "version": "1.0.0-*",
   "description": "steelcap Class Library",
-  "authors": [ "Ben" ],
+  "authors": [ "" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
 
   "dependencies": {
+    
+            "Microsoft.AspNet.Mvc": "6.0.0-beta5",
+    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta5",
+    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta5",
+    "Microsoft.AspNet.Authentication.Facebook": "1.0.0-beta5",
+    "Microsoft.AspNet.Authentication.Google": "1.0.0-beta5",
+    "Microsoft.AspNet.Authentication.MicrosoftAccount": "1.0.0-beta5",
+    "Microsoft.AspNet.Authentication.Twitter": "1.0.0-beta5",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-beta5",
+    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-beta5",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta5",
+    "Microsoft.AspNet.Server.IIS": "1.0.0-beta5",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta5",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta5",
+    "Microsoft.AspNet.Tooling.Razor": "1.0.0-beta5",
+
     "System.Collections": "4.0.10-beta-23019",
     "System.Linq": "4.0.0-beta-23019",
     "System.Threading": "4.0.10-beta-23019",
@@ -15,6 +31,8 @@
   },
 
   "frameworks": {
-    "dotnet": { }
+    "dotnet": {
+
+    }
   }
 }
