@@ -1,1 +1,1 @@
-# steelcap
+# MV6 TagHelpers for Bootstrap #
