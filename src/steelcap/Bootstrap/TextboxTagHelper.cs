@@ -7,6 +7,18 @@ using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 
 namespace Steelcap
 {
+    [TargetElement("sc-checkbox")]
+    public class Checkbox : TextboxCore
+    {
+        protected override string TextBoxType => "checkbox";
+    }
+
+    [TargetElement("sc-emailbox")]
+    public class EmailBox : TextboxCore
+    {
+        protected override string TextBoxType => "email";
+    }
+
     [TargetElement("sc-numberbox")]
     public class Numberbox : TextboxCore
     {
@@ -21,24 +33,26 @@ namespace Steelcap
 
     public abstract class TextboxCore : TagHelper
     {
-        protected abstract string TextBoxType { get;  }
-
-        public string Placeholder { get; set; }
-
-        public bool Horizontal { get; set; }
+        protected abstract string TextBoxType { get; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "input";
-            output.Attributes["class"] = "form-control";
+
+            AppendClass(output, "form-control");
             output.Attributes.Add("type", TextBoxType);
 
-            if (!string.IsNullOrEmpty(Placeholder))
-            {
-                output.Attributes.Add("placeholder", Placeholder);
-            }
-
             base.Process(context, output);
+        }
+
+        internal static void AppendClass(TagHelperOutput output, string cssClass)
+        {
+
+            if (output.Attributes["class"] == null)
+            {
+                output.Attributes["class"] = string.Empty;
+            }
+            output.Attributes["class"].Value += " " + cssClass;
         }
     }
 }
