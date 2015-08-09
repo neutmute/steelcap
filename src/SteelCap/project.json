@@ -1,11 +1,11 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "SteelCap - Tag Helpers for Bootstrap",
-  "authors": [ "neutmute" ],
-  "tags": [ "bootstrap taghelper" ],
-  "projectUrl": "https://github.com/neutmute/steelcap",
+    "version": "1.0.0-*",
+    "description": "SteelCap - Tag Helpers for Bootstrap",
+    "authors": [ "neutmute" ],
+    "tags": [ "bootstrap taghelper" ],
+    "projectUrl": "https://github.com/neutmute/steelcap",
     "licenseUrl": "",
-    "iconUrl": "",
+    "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot.jpg",
 
    "dependencies": {
         "Microsoft.AspNet.Mvc": "6.0.0-beta6"

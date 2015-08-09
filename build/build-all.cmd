@@ -1,0 +1,1 @@
+powershell -File build-all.ps1
