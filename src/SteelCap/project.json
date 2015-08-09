@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "SteelCap - TagHelpers for Bootstrap",
+  "description": "SteelCap - Tag Helpers for Bootstrap",
   "authors": [ "neutmute" ],
   "tags": [ "bootstrap taghelper" ],
   "projectUrl": "https://github.com/neutmute/steelcap",
