@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 
-namespace Steelcap
+namespace SteelCap
 {
     [TargetElement("sc-widget-box")]
     public class WidgetBoxHelper : TagHelper

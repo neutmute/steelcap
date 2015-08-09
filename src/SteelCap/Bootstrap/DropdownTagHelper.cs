@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using Steelcap;
+using SteelCap;
 
-namespace Steelcap
+namespace SteelCap
 {
     [TargetElement("sc-dropdown")]
     public class Dropdown : TagHelper
