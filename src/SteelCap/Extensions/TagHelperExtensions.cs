@@ -29,7 +29,7 @@ namespace SteelCap.Extensions
 
     public static class TagHelperExtensions
     {
-        internal static void AppendClass(this TagHelperOutput target, string cssClass)
+        public static void AppendClass(this TagHelperOutput target, string cssClass)
         {
             if (target.Attributes["class"] == null)
             {
