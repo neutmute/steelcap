@@ -13,18 +13,14 @@ namespace SteelCap
     {
         public string Title { get; set; }
 
+        public bool IsCollapsible { get; set; }
+
         public override async void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
             output.Attributes["class"] = "widget-box";
 
-            var widgetHeaderDiv = new TagBuilder("div");
-            widgetHeaderDiv.AddCssClass("widget-header");
-            var h4 = new TagBuilder("h4");
-            h4.AddCssClass("widget-title");
-            h4.SetInnerText(Title);
-
-            widgetHeaderDiv.InnerHtml += h4;
+            var widgetHeaderDiv = GetHeader(Title, IsCollapsible);
 
             var bodyDiv = new TagBuilder("div");
             bodyDiv.AddCssClass("widget-body");
@@ -44,5 +40,47 @@ namespace SteelCap
 
             base.Process(context, output);
         }
+
+        public static TagBuilder GetHeader(string title, bool isCollapsible = false)
+        {
+            var widgetHeaderDiv = new TagBuilder("div");
+            widgetHeaderDiv.AddCssClass("widget-header");
+            var h4 = new TagBuilder("h4");
+            h4.AddCssClass("widget-title");
+            
+            h4.SetInnerText(title);
+
+            widgetHeaderDiv.InnerHtml += h4;
+
+            if (isCollapsible)
+            {
+                widgetHeaderDiv.InnerHtml += GetToolbar(isCollapsible).ToString(TagRenderMode.Normal);
+            }
+
+            return widgetHeaderDiv;
+        }
+
+        public static TagBuilder GetToolbar(bool isCollapsible)
+        {
+            var toolbar = new TagBuilder("div");
+            toolbar.AddCssClass("widget-toolbar");
+
+            if (isCollapsible)
+            {
+                toolbar.InnerHtml = GetCollapseLink().ToString(TagRenderMode.Normal);
+            }
+
+            return toolbar;
+        }
+
+        internal static TagBuilder GetCollapseLink()
+        {
+            var anchor = new TagBuilder("a");
+            anchor.Attributes.Add("href", "#");
+            anchor.Attributes.Add("data-action", "collapse");
+            anchor.InnerHtml = IconHelper.Get("fa-chevron-up").ToString(TagRenderMode.Normal);
+            return anchor;
+        }
+
     }
 }
