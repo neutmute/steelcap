@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
@@ -58,7 +59,7 @@ namespace SteelCap
         {
             var originalContent = await context.GetChildContentAsync();
 
-            TextboxCore.AppendClass(output, "form-group");
+            output.AppendClass("form-group");
 
             var labelHtmlString = new HtmlString(string.Empty);
             if (!originalContent.GetContent().Contains("<label"))

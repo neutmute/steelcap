@@ -14,15 +14,5 @@ namespace SteelCap.Bootstrap
 
             base.Process(context, output);
         }
-
-        internal static void AppendClass(TagHelperOutput output, string cssClass)
-        {
-
-            if (output.Attributes["class"] == null)
-            {
-                output.Attributes["class"] = string.Empty;
-            }
-            output.Attributes["class"].Value += " " + cssClass;
-        }
     }
 }

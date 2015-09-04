@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
@@ -39,20 +40,10 @@ namespace SteelCap
         {
             output.TagName = "input";
 
-            AppendClass(output, "form-control");
+            output.AppendClass("form-control");
             output.Attributes.Add("type", TextBoxType);
 
             base.Process(context, output);
-        }
-
-        internal static void AppendClass(TagHelperOutput output, string cssClass)
-        {
-
-            if (output.Attributes["class"] == null)
-            {
-                output.Attributes["class"] = string.Empty;
-            }
-            output.Attributes["class"].Value += " " + cssClass;
         }
     }
 }

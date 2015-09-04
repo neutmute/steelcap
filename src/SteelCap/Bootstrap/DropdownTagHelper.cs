@@ -7,6 +7,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using SteelCap;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
@@ -19,7 +20,7 @@ namespace SteelCap
         {
             output.TagName = "select";
 
-            TextboxCore.AppendClass(output, "form-control");
+            output.AppendClass("form-control");
 
             var optionsList = new StringBuilder();
 
