@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
@@ -30,12 +31,11 @@ namespace SteelCap
 
             var originalContent = await context.GetChildContentAsync();
 
-            widgetMain.InnerHtml = originalContent.GetContent();
-            bodyDiv.InnerHtml = widgetMain.ToHtmlString(TagRenderMode.Normal).ToString();
+            widgetMain.InnerHtml = new HtmlString(originalContent.GetContent());
+            bodyDiv.InnerHtml = widgetMain;
 
-            var finalHtml = widgetHeaderDiv.ToHtmlString(TagRenderMode.Normal).ToString()
-                            + bodyDiv.ToHtmlString(TagRenderMode.Normal).ToString();
-
+            var finalHtml = widgetHeaderDiv.ConcatToString(bodyDiv);
+                            
             output.Content.SetContent(finalHtml);
 
             base.Process(context, output);
@@ -50,11 +50,11 @@ namespace SteelCap
             
             h4.SetInnerText(title);
 
-            widgetHeaderDiv.InnerHtml += h4;
+            widgetHeaderDiv.InnerHtml = widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(h4);
 
             if (isCollapsible)
             {
-                widgetHeaderDiv.InnerHtml += GetToolbar(isCollapsible).ToString(TagRenderMode.Normal);
+                widgetHeaderDiv.InnerHtml = widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(GetToolbar(isCollapsible));
             }
 
             return widgetHeaderDiv;
@@ -67,7 +67,7 @@ namespace SteelCap
 
             if (isCollapsible)
             {
-                toolbar.InnerHtml = GetCollapseLink().ToString(TagRenderMode.Normal);
+                toolbar.InnerHtml = GetCollapseLink();
             }
 
             return toolbar;
@@ -78,7 +78,7 @@ namespace SteelCap
             var anchor = new TagBuilder("a");
             anchor.Attributes.Add("href", "#");
             anchor.Attributes.Add("data-action", "collapse");
-            anchor.InnerHtml = IconHelper.Get("fa-chevron-up").ToString(TagRenderMode.Normal);
+            anchor.InnerHtml = IconHelper.Get("fa-chevron-up");
             return anchor;
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc.Rendering;
+using SteelCap.Extensions;
 using Xunit;
 
 namespace SteelCap.Test
@@ -13,9 +14,9 @@ namespace SteelCap.Test
         public void ToolBarHtml()
         {
             var toolbarTag = WidgetBoxHelper.GetToolbar(true);
-            var html = toolbarTag.ToString(TagRenderMode.Normal);
+            var html = toolbarTag.ConcatToString();
 
-            
+            Assert.Equal("", html);
         }
     }
 }

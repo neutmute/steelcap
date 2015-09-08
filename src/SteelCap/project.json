@@ -8,7 +8,7 @@
     "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot.jpg",
 
    "dependencies": {
-        "Microsoft.AspNet.Mvc": "6.0.0-beta6"
+        "Microsoft.AspNet.Mvc": "6.0.0-beta7"
     },
 
   "frameworks": {

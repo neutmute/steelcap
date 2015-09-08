@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using SteelCap.Extensions;
@@ -36,7 +37,7 @@ namespace SteelCap
                 labelBuilder.AddCssClass("col-sm-4");
             }
 
-            labelBuilder.InnerHtml = content;
+            labelBuilder.InnerHtml = new HtmlString(content);
 
             return labelBuilder;
         }
@@ -61,11 +62,11 @@ namespace SteelCap
 
             output.AppendClass("form-group");
 
-            var labelHtmlString = new HtmlString(string.Empty);
+            IHtmlContent labelHtml = new HtmlString(string.Empty);
             if (!originalContent.GetContent().Contains("<label"))
             {
                 var labelBuilder = FormGroupLabel.Get(Horizontal, LabelText);
-                labelHtmlString = labelBuilder.ToHtmlString(TagRenderMode.Normal);
+                labelHtml = labelBuilder;
             }
 
             var contentDiv = new TagBuilder("div");
@@ -75,10 +76,9 @@ namespace SteelCap
                 contentDiv.AddCssClass("col-sm-8");
             }
 
-            contentDiv.InnerHtml = originalContent.GetContent();
+            contentDiv.InnerHtml = new HtmlString(originalContent.GetContent());
 
-            var finalHtml = labelHtmlString.ToString()
-                            + contentDiv.ToHtmlString(TagRenderMode.Normal).ToString();
+            var finalHtml = labelHtml.ConcatToString(contentDiv);
 
             output.TagName = "div";
             output.Content.SetContent(finalHtml);

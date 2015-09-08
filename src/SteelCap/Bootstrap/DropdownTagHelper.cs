@@ -22,7 +22,7 @@ namespace SteelCap
 
             output.AppendClass("form-control");
 
-            var optionsList = new StringBuilder();
+            var optionsList = new List<TagBuilder>();
 
             if (Items == null)
             {
@@ -35,11 +35,11 @@ namespace SteelCap
                 option.Attributes.Add("value", item.Value);
                 option.SetInnerText(item.Text);
 
-                optionsList.Append(option.ToHtmlString(TagRenderMode.Normal));
+                optionsList.Add(option);
             }
 
-            output.SelfClosing = false;
-            
+            var optionsHtml = 
+
             output.Content.SetContent(optionsList.ToString());
 
             base.Process(context, output);
