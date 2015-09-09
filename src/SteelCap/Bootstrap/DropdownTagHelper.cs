@@ -19,6 +19,7 @@ namespace SteelCap
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "select";
+            output.TagMode = TagMode.StartTagAndEndTag;
 
             output.AppendClass("form-control");
 
@@ -37,10 +38,11 @@ namespace SteelCap
 
                 optionsList.Add(option);
             }
-
-            var optionsHtml = 
-
-            output.Content.SetContent(optionsList.ToString());
+            
+            optionsList.ForEach(o =>
+            {
+                output.Content.Append(o);
+            });
 
             base.Process(context, output);
         }
