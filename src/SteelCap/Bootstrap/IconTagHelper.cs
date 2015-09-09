@@ -15,7 +15,7 @@ namespace SteelCap
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = null;
-            output.Content.SetContent(Get(@Class).ToString());
+            output.Content.Append(Get(@Class));
             base.Process(context, output);
         }
 

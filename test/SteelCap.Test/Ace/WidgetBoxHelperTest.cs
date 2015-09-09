@@ -10,13 +10,14 @@ namespace SteelCap.Test
 {
     public class WidgetBoxHelperTest
     {
+
         [Fact]
         public void ToolBarHtml()
         {
             var toolbarTag = WidgetBoxHelper.GetToolbar(true);
             var html = toolbarTag.ConcatToString();
 
-            Assert.Equal("", html);
+            Assert.Equal("<div class=\"widget-toolbar\"><a data-action=\"collapse\" href=\"#\"><i class=\"fa-chevron-up\"></i></a></div>", html);
         }
     }
 }
