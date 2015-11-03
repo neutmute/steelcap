@@ -33,10 +33,9 @@ namespace SteelCap
             
             widgetMain.InnerHtml.Append(new HtmlString(originalContent.GetContent()));
             bodyDiv.InnerHtml.Append(widgetMain);
-
-            var finalHtml = widgetHeaderDiv.ConcatToString(bodyDiv);
-                            
-            output.Content.SetContent(finalHtml);
+            
+            output.Content.Clear();
+            output.Content.Append(widgetHeaderDiv);
 
             base.Process(context, output);
         }
@@ -50,11 +49,11 @@ namespace SteelCap
             
             h4.InnerHtml.Append(title);
 
-            widgetHeaderDiv.InnerHtml.Append(widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(h4));
+            widgetHeaderDiv.InnerHtml.Append(h4);
 
             if (isCollapsible)
             {
-                widgetHeaderDiv.InnerHtml.Append(widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(GetToolbar(isCollapsible)));
+                widgetHeaderDiv.InnerHtml.Append(GetToolbar(isCollapsible));
             }
 
             return widgetHeaderDiv;

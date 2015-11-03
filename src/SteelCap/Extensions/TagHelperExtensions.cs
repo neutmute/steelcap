@@ -8,25 +8,6 @@ using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 
 namespace SteelCap.Extensions
 {
-    public static class HtmlStringExtensions
-    {
-        public static HtmlString Concat(this HtmlString first, string html)
-        {
-            return Concat(first, new HtmlString(html));
-        }
-
-        public static HtmlString Concat(this HtmlString first, params HtmlString[] htmlStringsForConcat)
-        {
-            var sb = new StringBuilder();
-            sb.Append(first);
-            foreach (var htmlString in htmlStringsForConcat)
-            {
-                sb.Append(htmlString);
-            }
-            return new HtmlString(sb.ToString());
-        }
-    }
-
     public static class TagHelperExtensions
     {
         public static void AppendClass(this TagHelperOutput target, string cssClass)

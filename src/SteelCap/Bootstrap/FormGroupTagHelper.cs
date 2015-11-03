@@ -62,11 +62,10 @@ namespace SteelCap
 
             output.AppendClass("form-group");
 
-            IHtmlContent labelHtml = new HtmlString(string.Empty);
+            TagBuilder labelBuilder = null;
             if (!originalContent.GetContent().Contains("<label"))
             {
-                var labelBuilder = FormGroupLabel.Get(Horizontal, LabelText);
-                labelHtml = labelBuilder;
+                labelBuilder = FormGroupLabel.Get(Horizontal, LabelText);
             }
 
             var contentDiv = new TagBuilder("div");
@@ -76,12 +75,15 @@ namespace SteelCap
                 contentDiv.AddCssClass("col-sm-8");
             }
 
-            contentDiv.InnerHtml.Append(originalContent.GetContent());
-
-            var finalHtml = labelHtml.ConcatToString(contentDiv);
-
+            contentDiv.InnerHtml.AppendEncoded(originalContent.GetContent());
+            
             output.TagName = "div";
-            output.Content.SetContent(finalHtml);
+            output.Content.Clear();
+            if (labelBuilder != null)
+            {
+                output.Content.Append(labelBuilder);
+            }
+            output.Content.Append(contentDiv);
 
             base.Process(context, output);
         }

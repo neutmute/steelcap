@@ -15,7 +15,7 @@ namespace SteelCap.Test
         public void ToolBarHtml()
         {
             var toolbarTag = WidgetBoxHelper.GetToolbar(true);
-            var html = toolbarTag.ConcatToString();
+            var html = toolbarTag.ToHtml();
 
             Assert.Equal("<div class=\"widget-toolbar\"><a data-action=\"collapse\" href=\"#\"><i class=\"fa-chevron-up\"></i></a></div>", html);
         }
