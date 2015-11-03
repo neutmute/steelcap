@@ -1,16 +1,14 @@
 {
     "version": "1.0.0-*",
     "description": "SteelCap.Test Class Library",
-    "authors": [ "bhaszard" ],
+    "authors": [ "neutmute" ],
     "tags": [ "" ],
     "projectUrl": "",
     "licenseUrl": "",
 
   "dependencies": {
-
-    "xunit": "2.1.0-rc1-build3168",
+    "xunit": "2.1.0",
     "xunit.runner.dnx": "2.1.0-beta5-build169",
-
     "SteelCap": "1.0.0-*"
   },
 

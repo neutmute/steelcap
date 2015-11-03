@@ -7,9 +7,9 @@
     "licenseUrl": "",
     "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot.jpg",
 
-   "dependencies": {
-        "Microsoft.AspNet.Mvc": "6.0.0-beta7"
-    },
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "6.0.0-beta8"
+  },
 
   "frameworks": {
     "dnx451": { }
