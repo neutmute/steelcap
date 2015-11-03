@@ -34,7 +34,7 @@ namespace SteelCap
             {
                 var option = new TagBuilder("option");
                 option.Attributes.Add("value", item.Value);
-                option.SetInnerText(item.Text);
+                option.InnerHtml.Append(item.Text);
 
                 optionsList.Add(option);
             }

@@ -37,7 +37,7 @@ namespace SteelCap
                 labelBuilder.AddCssClass("col-sm-4");
             }
 
-            labelBuilder.InnerHtml = new HtmlString(content);
+            labelBuilder.InnerHtml.Append(content);
 
             return labelBuilder;
         }
@@ -76,7 +76,7 @@ namespace SteelCap
                 contentDiv.AddCssClass("col-sm-8");
             }
 
-            contentDiv.InnerHtml = new HtmlString(originalContent.GetContent());
+            contentDiv.InnerHtml.Append(originalContent.GetContent());
 
             var finalHtml = labelHtml.ConcatToString(contentDiv);
 

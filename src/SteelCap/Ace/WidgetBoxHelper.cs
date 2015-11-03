@@ -30,9 +30,9 @@ namespace SteelCap
             widgetMain.AddCssClass("widget-main");
 
             var originalContent = await context.GetChildContentAsync();
-
-            widgetMain.InnerHtml = new HtmlString(originalContent.GetContent());
-            bodyDiv.InnerHtml = widgetMain;
+            
+            widgetMain.InnerHtml.Append(new HtmlString(originalContent.GetContent()));
+            bodyDiv.InnerHtml.Append(widgetMain);
 
             var finalHtml = widgetHeaderDiv.ConcatToString(bodyDiv);
                             
@@ -48,13 +48,13 @@ namespace SteelCap
             var h4 = new TagBuilder("h4");
             h4.AddCssClass("widget-title");
             
-            h4.SetInnerText(title);
+            h4.InnerHtml.Append(title);
 
-            widgetHeaderDiv.InnerHtml = widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(h4);
+            widgetHeaderDiv.InnerHtml.Append(widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(h4));
 
             if (isCollapsible)
             {
-                widgetHeaderDiv.InnerHtml = widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(GetToolbar(isCollapsible));
+                widgetHeaderDiv.InnerHtml.Append(widgetHeaderDiv.InnerHtml.ConcatToHtmlContent(GetToolbar(isCollapsible)));
             }
 
             return widgetHeaderDiv;
@@ -67,7 +67,7 @@ namespace SteelCap
 
             if (isCollapsible)
             {
-                toolbar.InnerHtml = GetCollapseLink();
+                toolbar.InnerHtml.Append(GetCollapseLink());
             }
 
             return toolbar;
@@ -78,7 +78,7 @@ namespace SteelCap
             var anchor = new TagBuilder("a");
             anchor.Attributes.Add("href", "#");
             anchor.Attributes.Add("data-action", "collapse");
-            anchor.InnerHtml = IconHelper.Get("fa-chevron-up");
+            anchor.InnerHtml.Append(IconHelper.Get("fa-chevron-up"));
             return anchor;
         }
 
