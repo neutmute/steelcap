@@ -9,7 +9,7 @@ using SteelCap.Extensions;
 
 namespace SteelCap
 {
-    [TargetElement("sc-form-group-label")]
+    [HtmlTargetElement("sc-form-group-label")]
     public class FormGroupLabel : TagHelper
     {
         public bool Horizontal { get; set; }
@@ -49,7 +49,7 @@ namespace SteelCap
         {{original content}}
         </div>
         */
-    [TargetElement("sc-form-group")]
+    [HtmlTargetElement("sc-form-group")]
     public class FormGroup : TagHelper
     {
         public string LabelText { get; set; }

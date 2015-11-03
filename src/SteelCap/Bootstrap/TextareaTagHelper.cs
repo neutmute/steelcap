@@ -3,7 +3,7 @@ using SteelCap.Extensions;
 
 namespace SteelCap.Bootstrap
 {
-    [TargetElement("sc-textarea")]
+    [HtmlTargetElement("sc-textarea")]
     public class TextareaTagHelper : TagHelper
     {
         public override void Process(TagHelperContext context, TagHelperOutput output)

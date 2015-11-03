@@ -11,7 +11,7 @@ using SteelCap.Extensions;
 
 namespace SteelCap
 {
-    [TargetElement("sc-dropdown")]
+    [HtmlTargetElement("sc-dropdown")]
     public class Dropdown : TagHelper
     {
         public List<SelectListItem> Items { get; set; }

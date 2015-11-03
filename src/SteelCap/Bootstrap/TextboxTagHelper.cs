@@ -8,25 +8,25 @@ using SteelCap.Extensions;
 
 namespace SteelCap
 {
-    [TargetElement("sc-checkbox")]
+    [HtmlTargetElement("sc-checkbox")]
     public class Checkbox : TextboxCore
     {
         protected override string TextBoxType => "checkbox";
     }
 
-    [TargetElement("sc-emailbox")]
+    [HtmlTargetElement("sc-emailbox")]
     public class EmailBox : TextboxCore
     {
         protected override string TextBoxType => "email";
     }
 
-    [TargetElement("sc-numberbox")]
+    [HtmlTargetElement("sc-numberbox")]
     public class Numberbox : TextboxCore
     {
         protected override string TextBoxType => "number";
     }
 
-    [TargetElement("sc-textbox")]
+    [HtmlTargetElement("sc-textbox")]
     public class Textbox : TextboxCore
     {
         protected override string TextBoxType => "text";

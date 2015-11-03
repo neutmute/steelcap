@@ -9,7 +9,7 @@ using SteelCap.Extensions;
 
 namespace SteelCap
 {
-    [TargetElement("sc-widget-box")]
+    [HtmlTargetElement("sc-widget-box")]
     public class WidgetBoxHelper : TagHelper
     {
         public string Title { get; set; }

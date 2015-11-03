@@ -8,7 +8,7 @@ using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 
 namespace SteelCap
 {
-    [TargetElement("sc-icon")]
+    [HtmlTargetElement("sc-icon")]
     public class IconHelper : TagHelper
     {
         public string @Class { get; set; }
