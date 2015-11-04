@@ -31,11 +31,12 @@ namespace SteelCap
 
             var originalContent = await context.GetChildContentAsync();
             
-            widgetMain.InnerHtml.Append(new HtmlString(originalContent.GetContent()));
+            widgetMain.InnerHtml.AppendEncoded(originalContent.GetContent());
             bodyDiv.InnerHtml.Append(widgetMain);
             
             output.Content.Clear();
             output.Content.Append(widgetHeaderDiv);
+            output.Content.Append(bodyDiv);
 
             base.Process(context, output);
         }

@@ -28,7 +28,7 @@ namespace SteelCap
             output.Content.SetContent(labelBuilder.InnerHtml);
         }
 
-        internal static TagBuilder Get(bool isHorizontal, string content)
+        internal static TagBuilder Get(bool isHorizontal, string contentEncoded)
         {
             var labelBuilder = new TagBuilder("label");
             if (isHorizontal)
@@ -37,7 +37,7 @@ namespace SteelCap
                 labelBuilder.AddCssClass("col-sm-4");
             }
 
-            labelBuilder.InnerHtml.Append(content);
+            labelBuilder.InnerHtml.AppendEncoded(contentEncoded);
 
             return labelBuilder;
         }
