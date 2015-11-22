@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using SteelCap;
+using Microsoft.AspNet.Razor.TagHelpers;
 using SteelCap.Extensions;
 
 namespace SteelCap
