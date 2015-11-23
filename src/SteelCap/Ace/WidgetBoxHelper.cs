@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc.Rendering;
+﻿using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using SteelCap.Extensions;
+using Microsoft.AspNet.Razor.TagHelpers;
 
 namespace SteelCap
 {
@@ -29,9 +24,9 @@ namespace SteelCap
             var widgetMain = new TagBuilder("div");
             widgetMain.AddCssClass("widget-main");
 
-            var originalContent = await context.GetChildContentAsync();
+            var originalContent = await output.GetChildContentAsync();
             
-            widgetMain.InnerHtml.AppendEncoded(originalContent.GetContent());
+            widgetMain.InnerHtml.AppendHtml(originalContent.GetContent());
             bodyDiv.InnerHtml.Append(widgetMain);
             
             output.Content.Clear();

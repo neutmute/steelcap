@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Html.Abstractions;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
+﻿using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Razor.TagHelpers;
 using SteelCap.Extensions;
 
 namespace SteelCap
@@ -16,7 +11,7 @@ namespace SteelCap
 
         public override async void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var originalContent = await context.GetChildContentAsync();
+            var originalContent = await output.GetChildContentAsync();
             var labelBuilder = Get(Horizontal, originalContent.GetContent());
             output.TagName = labelBuilder.TagName;
 
@@ -37,7 +32,7 @@ namespace SteelCap
                 labelBuilder.AddCssClass("col-sm-4");
             }
 
-            labelBuilder.InnerHtml.AppendEncoded(contentEncoded);
+            labelBuilder.InnerHtml.AppendHtml(contentEncoded);
 
             return labelBuilder;
         }
@@ -58,7 +53,7 @@ namespace SteelCap
 
         public override async void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var originalContent = await context.GetChildContentAsync();
+            var originalContent = await output.GetChildContentAsync();
 
             output.AppendClass("form-group");
 
@@ -75,7 +70,7 @@ namespace SteelCap
                 contentDiv.AddCssClass("col-sm-8");
             }
 
-            contentDiv.InnerHtml.AppendEncoded(originalContent.GetContent());
+            contentDiv.InnerHtml.AppendHtml(originalContent.GetContent());
             
             output.TagName = "div";
             output.Content.Clear();
