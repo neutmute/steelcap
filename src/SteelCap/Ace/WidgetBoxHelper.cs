@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.AspNet.Razor.TagHelpers;
 
 namespace SteelCap
