@@ -5,7 +5,7 @@
     "tags": [ "bootstrap taghelper" ],
     "projectUrl": "https://github.com/neutmute/steelcap",
     "licenseUrl": "",
-    "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot.jpg",
+    "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot32x32.png",
 
   "dependencies": {
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final"
