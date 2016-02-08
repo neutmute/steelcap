@@ -11,6 +11,13 @@ namespace SteelCap
 
         public bool IsCollapsible { get; set; }
 
+        public bool Padding { get; set; }
+
+        public WidgetBoxHelper()
+        {
+            Padding = true;
+        }
+
         public override async void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
@@ -21,8 +28,14 @@ namespace SteelCap
             var bodyDiv = new TagBuilder("div");
             bodyDiv.AddCssClass("widget-body");
 
+
             var widgetMain = new TagBuilder("div");
             widgetMain.AddCssClass("widget-main");
+            
+            if (!Padding)
+            {
+                widgetMain.AddCssClass("no-padding");
+            }
 
             var originalContent = await output.GetChildContentAsync();
             
