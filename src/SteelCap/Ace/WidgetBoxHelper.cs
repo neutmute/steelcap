@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.AspNet.Razor.TagHelpers;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
@@ -13,6 +14,8 @@ namespace SteelCap
 
         public bool Padding { get; set; }
 
+        public string Class { get; set; }
+
         public WidgetBoxHelper()
         {
             Padding = true;
@@ -21,7 +24,9 @@ namespace SteelCap
         public override async void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
-            output.Attributes["class"] = "widget-box";
+
+            output.AppendClass("widget-box");
+            output.AppendClass(Class);
 
             var widgetHeaderDiv = GetHeader(Title, IsCollapsible);
 

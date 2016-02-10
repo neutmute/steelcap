@@ -7,6 +7,11 @@ namespace SteelCap.Extensions
     {
         public static void AppendClass(this TagHelperOutput target, string cssClass)
         {
+            if (string.IsNullOrWhiteSpace(cssClass))
+            {
+                return;
+            }
+
             if (target.Attributes["class"] == null)
             {
                 target.Attributes["class"] = string.Empty;
