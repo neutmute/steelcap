@@ -27,73 +27,26 @@ namespace SteelCap
 
             output.AppendClass("widget-box");
             output.AppendClass(Class);
-
-            var widgetHeaderDiv = GetHeader(Title, IsCollapsible);
-
-            var bodyDiv = new TagBuilder("div");
-            bodyDiv.AddCssClass("widget-body");
-
-
-            var widgetMain = new TagBuilder("div");
-            widgetMain.AddCssClass("widget-main");
             
-            if (!Padding)
-            {
-                widgetMain.AddCssClass("no-padding");
-            }
-
             var originalContent = await output.GetChildContentAsync();
-            
-            widgetMain.InnerHtml.AppendHtml(originalContent.GetContent());
-            bodyDiv.InnerHtml.Append(widgetMain);
-            
-            output.Content.Clear();
-            output.Content.Append(widgetHeaderDiv);
-            output.Content.Append(bodyDiv);
+            var innerHtml = originalContent.GetContent();
 
+            output.Content.Clear();
+
+            if (!innerHtml.Contains(WidgetBoxHeaderHelper.HeaderCss))
+            {
+                // user is taking easy/lazy way of declaring the widget box
+                output.Content.Append(WidgetBoxHeaderHelper.GetFullHeader(Title, IsCollapsible));
+                var widgetBodyDiv = WidgetBoxBodyHelper.GetFullBodyInternals(Padding, innerHtml);
+                output.Content.Append(widgetBodyDiv);
+            }
+            else
+            {
+                // user is doing the hardwork themselves
+                output.Content.AppendHtml(innerHtml);
+            }
+            
             base.Process(context, output);
         }
-
-        public static TagBuilder GetHeader(string title, bool isCollapsible = false)
-        {
-            var widgetHeaderDiv = new TagBuilder("div");
-            widgetHeaderDiv.AddCssClass("widget-header");
-            var h4 = new TagBuilder("h4");
-            h4.AddCssClass("widget-title");
-            
-            h4.InnerHtml.Append(title);
-
-            widgetHeaderDiv.InnerHtml.Append(h4);
-
-            if (isCollapsible)
-            {
-                widgetHeaderDiv.InnerHtml.Append(GetToolbar(isCollapsible));
-            }
-
-            return widgetHeaderDiv;
-        }
-
-        public static TagBuilder GetToolbar(bool isCollapsible)
-        {
-            var toolbar = new TagBuilder("div");
-            toolbar.AddCssClass("widget-toolbar");
-
-            if (isCollapsible)
-            {
-                toolbar.InnerHtml.Append(GetCollapseLink());
-            }
-
-            return toolbar;
-        }
-
-        internal static TagBuilder GetCollapseLink()
-        {
-            var anchor = new TagBuilder("a");
-            anchor.Attributes.Add("href", "#");
-            anchor.Attributes.Add("data-action", "collapse");
-            anchor.InnerHtml.Append(IconHelper.Get("fa-chevron-up"));
-            return anchor;
-        }
-
     }
 }
