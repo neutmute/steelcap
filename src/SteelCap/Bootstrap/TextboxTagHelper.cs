@@ -29,12 +29,15 @@ namespace SteelCap
 
     public abstract class TextboxCore : TagHelper
     {
+        public string @Class { get; set; }
+
         protected abstract string TextBoxType { get; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "input";
 
+            output.AppendClass(Class);
             output.AppendClass("form-control");
             output.Attributes.Add("type", TextBoxType);
 
