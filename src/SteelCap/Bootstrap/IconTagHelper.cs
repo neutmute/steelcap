@@ -2,17 +2,17 @@
 using System.Linq;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.TagHelpers;
+using SteelCap.Extensions;
 
 namespace SteelCap
 {
     [HtmlTargetElement("sc-icon")]
     public class IconHelper : TagHelper
     {
-        public string @Class { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            output.TagName = null;
-            output.Content.Append(Get(@Class));
+            output.TagName = "i";
+            BaseCssClass.ForEach(output.AppendClass);
             base.Process(context, output);
         }
 
