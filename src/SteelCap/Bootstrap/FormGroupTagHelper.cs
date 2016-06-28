@@ -20,7 +20,7 @@ namespace SteelCap
                 output.Attributes.Add("class", labelBuilder.Attributes["class"]);
             }
 
-            output.Content.SetContent(labelBuilder.InnerHtml);
+            output.Content.SetHtmlContent(labelBuilder.InnerHtml);
         }
 
         internal static TagBuilder Get(bool isHorizontal, string contentEncoded)
@@ -76,9 +76,9 @@ namespace SteelCap
             output.Content.Clear();
             if (labelBuilder != null)
             {
-                output.Content.Append(labelBuilder);
+                output.Content.AppendHtml(labelBuilder);
             }
-            output.Content.Append(contentDiv);
+            output.Content.AppendHtml(contentDiv);
 
             base.Process(context, output);
         }

@@ -35,7 +35,7 @@ namespace SteelCap
             
             optionsList.ForEach(o =>
             {
-                output.Content.Append(o);
+                output.Content.AppendHtml(o);
             });
 
             base.Process(context, output);

@@ -27,7 +27,7 @@ namespace SteelCap
             headerDiv.InnerHtml.AppendHtml(originalContent.GetContent());
 
             output.Content.Clear();
-            output.Content.Append(headerDiv);
+            output.Content.AppendHtml(headerDiv);
 
             base.Process(context, output);
         }
@@ -51,24 +51,24 @@ namespace SteelCap
             
             h4.InnerHtml.Append(title);
 
-            widgetHeaderDiv.InnerHtml.Append(h4);
+            widgetHeaderDiv.InnerHtml.AppendHtml(h4);
 
             if (isCollapsible)
             {
-                widgetHeaderDiv.InnerHtml.Append(GetToolbar(isCollapsible));
+                widgetHeaderDiv.InnerHtml.AppendHtml(GetToolbar(isCollapsible));
             }
 
             return widgetHeaderDiv;
         }
 
-        private static TagBuilder GetToolbar(bool isCollapsible)
+        internal static TagBuilder GetToolbar(bool isCollapsible)
         {
             var toolbar = new TagBuilder("div");
             toolbar.AddCssClass("widget-toolbar");
 
             if (isCollapsible)
             {
-                toolbar.InnerHtml.Append(GetCollapseLink());
+                toolbar.InnerHtml.AppendHtml(GetCollapseLink());
             }
 
             return toolbar;
@@ -79,7 +79,7 @@ namespace SteelCap
             var anchor = new TagBuilder("a");
             anchor.Attributes.Add("href", "#");
             anchor.Attributes.Add("data-action", "collapse");
-            anchor.InnerHtml.Append(IconHelper.Get("fa-chevron-up"));
+            anchor.InnerHtml.AppendHtml(IconHelper.Get("fa-chevron-up"));
             return anchor;
         }
 

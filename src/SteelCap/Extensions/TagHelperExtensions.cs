@@ -12,15 +12,21 @@ namespace SteelCap.Extensions
                 return;
             }
 
-            if (target.Attributes["class"] == null)
+
+            var classAttribute = target.Attributes["class"];
+            var currentClass = string.Empty;
+
+            if (classAttribute == null)
             {
-                target.Attributes["class"] = string.Empty;
+                target.Attributes.SetAttribute("class", string.Empty);
             }
             else
             {
-                target.Attributes["class"].Value += " ";
+                currentClass = classAttribute.Value.ToString();
+                currentClass += " ";
             }
-            target.Attributes["class"].Value += cssClass;
+            currentClass += cssClass;
+            target.Attributes.SetAttribute("class", currentClass);
         }
     }
 }

@@ -34,9 +34,9 @@ namespace SteelCap
             if (!innerHtml.Contains(WidgetBoxHeaderHelper.HeaderCss))
             {
                 // user is taking easy/lazy way of declaring the widget box
-                output.Content.Append(WidgetBoxHeaderHelper.GetFullHeader(Title, IsCollapsible));
+                output.Content.AppendHtml(WidgetBoxHeaderHelper.GetFullHeader(Title, IsCollapsible));
                 var widgetBodyDiv = WidgetBoxBodyHelper.GetFullBodyInternals(Padding, innerHtml);
-                output.Content.Append(widgetBodyDiv);
+                output.Content.AppendHtml(widgetBodyDiv);
             }
             else
             {

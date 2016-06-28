@@ -17,7 +17,7 @@ namespace SteelCap
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
-            output.Attributes["class"] = "profile-info-row";
+            output.Attributes.SetAttribute("class", "profile-info-row");
 
             var sb = new StringBuilder();
             sb.AppendFormat(@"
