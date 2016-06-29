@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace SteelCap.Test
 {
@@ -9,13 +9,13 @@ namespace SteelCap.Test
     {
         protected TagHelperOutput GetSimpleTagHelperOutput()
         {
-            var output = new TagHelperOutput("a", attributes: new TagHelperAttributeList(),
-              getChildContentAsync: useCachedResult =>
-              {
-                  var tagHelperContent = new DefaultTagHelperContent();
-                  tagHelperContent.SetContent("Something");
-                  return Task.FromResult<TagHelperContent>(tagHelperContent);
-              });
+            var output = new TagHelperOutput("a", new TagHelperAttributeList(), (useCachedResult, encoder) =>
+            {
+                var tagHelperContent = new DefaultTagHelperContent();
+                tagHelperContent.SetContent("Something");
+                return Task.FromResult<TagHelperContent>(tagHelperContent);
+            });
+
             output.Content.SetContent(string.Empty);
 
             return output;
@@ -24,8 +24,7 @@ namespace SteelCap.Test
         protected TagHelperContext GetSimpleTagHelperContext()
         {
             var context = new TagHelperContext(
-              allAttributes: new ReadOnlyTagHelperAttributeList<IReadOnlyTagHelperAttribute>(
-                  Enumerable.Empty<IReadOnlyTagHelperAttribute>()),
+              allAttributes: new TagHelperAttributeList(), 
               items: new Dictionary<object, object>(),
               uniqueId: "test");
 

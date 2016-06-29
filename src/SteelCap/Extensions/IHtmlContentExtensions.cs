@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using Microsoft.AspNet.Html.Abstractions;
+using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Html;
 using Microsoft.Extensions.WebEncoders;
 
 namespace SteelCap.Extensions

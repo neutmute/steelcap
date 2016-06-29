@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using Microsoft.AspNet.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using SteelCap.Extensions;
 
 namespace SteelCap
@@ -41,7 +40,7 @@ namespace SteelCap
             bodyContainer.WidgetMain.InnerHtml.AppendHtml(originalContent.GetContent());
 
             output.Content.Clear();
-            output.Content.Append(bodyContainer.WidgetBody);
+            output.Content.AppendHtml(bodyContainer.WidgetBody);
 
             base.Process(context, output);
         }
@@ -59,7 +58,7 @@ namespace SteelCap
                 widgetMain.AddCssClass("no-padding");
             }
 
-            bodyDiv.InnerHtml.Append(widgetMain);
+            bodyDiv.InnerHtml.AppendHtml(widgetMain);
 
             var output = new WidgetBodyContainer();
             output.WidgetBody = bodyDiv;

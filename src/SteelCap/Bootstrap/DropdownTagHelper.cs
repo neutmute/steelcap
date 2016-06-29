@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Razor.TagHelpers;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using SteelCap.Extensions;
 
 namespace SteelCap
@@ -40,7 +35,7 @@ namespace SteelCap
             
             optionsList.ForEach(o =>
             {
-                output.Content.Append(o);
+                output.Content.AppendHtml(o);
             });
 
             base.Process(context, output);
