@@ -8,9 +8,9 @@
     "iconUrl": "https://raw.githubusercontent.com/neutmute/steelcap/master/docs/boot32x32.png",
     "licenseUrl": ""
   },
-  "dependencies": {
-    "Microsoft.AspNetCore.Mvc": "1.0.0"
-  },
+    "dependencies": {
+        "Microsoft.AspNetCore.Mvc": "1.0.0"
+    },
 
   "frameworks": {
     "net451": { }
