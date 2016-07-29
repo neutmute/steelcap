@@ -1,4 +1,4 @@
-# Steelcap: MV6 Tag Helpers for Bootstrap #
+# Steelcap: MVC 6 Tag Helpers for Bootstrap #
 A collection of  MVC 6 Tag Helpers for more concise Razor code for describing [Bootstrap](http://getbootstrap.com/) elements
 
 ## Form controls ##
@@ -49,4 +49,4 @@ renders out to the client as
 
 See [aspnetv5demo](https://github.com/neutmute/aspnetv5demo) for a working demo
 
-Pull requests welcome.
+
